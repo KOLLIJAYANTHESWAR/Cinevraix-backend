@@ -8,8 +8,8 @@ import { startPublicChatResetJob } from "./cron/publicChatReset.cron.js";
 const startServer = async () => {
   try {
     await connectDB();
-    await connectRedis();           // ✅ Redis first
-    startPublicChatResetJob();      // ✅ Cron after Redis
+    await connectRedis();           // ✅ MUST COME FIRST
+    startPublicChatResetJob();      // ✅ THEN CRON
 
     server.listen(env.port, () => {
       console.log(`🚀 Server running on port ${env.port}`);
