@@ -17,6 +17,7 @@ import groupRoutes from "./modules/chat/group.routes.js";
 import moderationRoutes from "./modules/chat/moderation.routes.js";
 import platformAdminRoutes from "./modules/admin/platform.routes.js";
 import auditRoutes from "./modules/admin/audit.routes.js";
+import healthRoutes from "./routes/health.routes.js";
 
 /**
  * Rate limiters
@@ -41,6 +42,7 @@ router.use("/genres", apiLimiter, genreRoutes);
 router.use("/people", apiLimiter, peopleRoutes);
 router.use("/recommendations", apiLimiter, recommendationRoutes);
 router.use("/posts", apiLimiter, postRoutes);
+router.use("/health", healthRoutes);
 
 // 👤 USER / SOCIAL
 router.use("/users", userRoutes);
