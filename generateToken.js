@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 // MUST MATCH JWT_SECRET in .env
-const JWT_SECRET = "ad026d992743431aa59f952bd0ca098f";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const token = jwt.sign(
   {
