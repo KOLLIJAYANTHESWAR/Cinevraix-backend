@@ -9,10 +9,16 @@ import { env } from "./config/env.js";
 const app = express();
 
 /* ======================
+   🔐 TRUST PROXY (REQUIRED FOR RENDER)
+   ====================== */
+// Allows express-rate-limit to read X-Forwarded-For correctly
+app.set("trust proxy", 1);
+
+/* ======================
    Global Middlewares
    ====================== */
 
-// CORS (configure origin later if needed)
+// CORS (can restrict origin later)
 app.use(cors());
 
 // Body parsing
