@@ -9,23 +9,20 @@ import { env } from "./config/env.js";
 const app = express();
 
 /* ======================
-   🔐 TRUST PROXY (REQUIRED FOR RENDER)
+   🔐 TRUST PROXY (REQUIRED ON RENDER)
    ====================== */
-// Allows express-rate-limit to read X-Forwarded-For correctly
+// Allows express-rate-limit to correctly read X-Forwarded-For
 app.set("trust proxy", 1);
 
 /* ======================
    Global Middlewares
    ====================== */
 
-// CORS (can restrict origin later)
 app.use(cors());
 
-// Body parsing
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// Logging (dev only)
 if (env.nodeEnv !== "production") {
   app.use(morgan("dev"));
 }
